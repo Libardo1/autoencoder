@@ -41,7 +41,7 @@ for i in range(n):
     plt.imshow(x_test[i].reshape(image_width, image_width))
 
     plt.subplot(2, n, n + i + 1)
-    plt.imshow(decoded_imgs.reshape(image_width, image_width))
+    plt.imshow(decoded_imgs[i].reshape(image_width, image_width))
 plt.show()
 
 

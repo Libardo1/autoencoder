@@ -24,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/simple_autoencoder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
               <folding>
                 <element signature="e#14#51#0" expanded="true" />
               </folding>
@@ -51,8 +51,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="540" />
-    <option name="y" value="132" />
+    <option name="x" value="413" />
+    <option name="y" value="127" />
     <option name="width" value="1174" />
     <option name="height" value="850" />
   </component>
@@ -302,7 +302,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="540" y="132" width="1174" height="850" extended-state="0" />
+    <frame x="413" y="127" width="1174" height="850" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18221831" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -454,7 +454,7 @@
     <entry file="file://$PROJECT_DIR$/simple_autoencoder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
             <element signature="e#14#51#0" expanded="true" />
           </folding>
