@@ -13,6 +13,7 @@ epoch = 50
 
 autoencoder = Sequential()
 autoencoder.add(Dense(encoding_dim, input_dim=input_dim, activation='relu'))
+# Dense(output_dim, input_dim, ...)
 autoencoder.add(Dense(input_dim, activation='sigmoid'))
 
 autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')

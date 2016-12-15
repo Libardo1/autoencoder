@@ -10,21 +10,17 @@ image_width = 28
 epoch = 50
 
 autoencoder = Sequential()
-autoencoder.add(Convolution2D(16, 3, 3, input_shape=(1, image_width, image_width),
+autoencoder.add(Convolution2D(32, 3, 3, input_shape=(1, image_width, image_width),
                               border_mode='same', activation='relu'))
 # Convolution2D(卷积核数目，卷积核宽，卷积核高，...)
 # border_mode='same' 或'valid'，前者输入和输出一样大，后者会“缩水一圈”
 autoencoder.add(MaxPooling2D((2, 2), border_mode='same'))
 # 下采样，长宽分别缩小一半
-autoencoder.add(Convolution2D(8, 3, 3, border_mode='same', activation='relu'))
+autoencoder.add(Convolution2D(32, 3, 3, border_mode='same', activation='relu'))
 autoencoder.add(MaxPooling2D((2, 2), border_mode='same'))
-# autoencoder.add(Convolution2D(8, 3, 3, border_mode='same', activation='relu'))
-# autoencoder.add(MaxPooling2D((2, 2), border_mode='same'))
-# autoencoder.add(Convolution2D(8, 3, 3, border_mode='same', activation='relu'))
-# autoencoder.add(UpSampling2D((2, 2)))
-autoencoder.add(Convolution2D(8, 3, 3, border_mode='same', activation='relu'))
+autoencoder.add(Convolution2D(32, 3, 3, border_mode='same', activation='relu'))
 autoencoder.add(UpSampling2D((2, 2)))
-autoencoder.add(Convolution2D(16, 3, 3, border_mode='same', activation='relu'))
+autoencoder.add(Convolution2D(32, 3, 3, border_mode='same', activation='relu'))
 autoencoder.add(UpSampling2D((2, 2)))
 autoencoder.add(Convolution2D(1, 3, 3, border_mode='same', activation='sigmoid'))
 autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
@@ -39,10 +35,17 @@ x_train = x_train.reshape(len(x_train), 1, image_width, image_width)
 x_test = x_test.reshape(len(x_test), 1, image_width, image_width)
 # x_train.shape = [60000, 1, 28, 28]
 
-print x_train.shape # [60000, 1, 28, 28]
-print x_test.shape  # [10000, 1, 28, 28]
+noise_factor = 0.5
+x_train_noisy = x_train + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=x_train.shape)
+x_test_noisy = x_test + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=x_test.shape)
 
-autoencoder.fit(x_train, x_train, nb_epoch = epoch, validation_data=(x_test, x_test))
+x_train_noisy = np.clip(x_train_noisy, 0., 1.)
+x_test_noisy = np.clip(x_test_noisy, 0., 1.)
+
+print x_train.shape # [60000, 784]
+print x_test.shape  # [10000, 784]
+
+autoencoder.fit(x_train_noisy, x_train, nb_epoch = epoch, validation_data=(x_test_noisy, x_test))
 
 decoded_imgs = autoencoder.predict(x_test)
 n = 10
